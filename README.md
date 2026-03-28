@@ -1,9 +1,14 @@
 
 <h1 align="center">Food Munch</h1>
   
+<<<<<<< HEAD
 
 
 
+=======
+  
+  
+>>>>>>> 2ae0a98 (there is something changes)
 
 # Installation
 

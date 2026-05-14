@@ -3,8 +3,9 @@ import './Header.css'
 
 const particles = ['🍕', '🍔', '🌮', '🍜', '🍣', '🧆', '🍰', '🥗'];
 
-// 🎬 Stream high-speed external video to bypass bundle size limits
-const VIDEO_SRC = "https://res.cloudinary.com/demo/video/upload/food.mp4";
+// 🎬 Using local custom MP4 file
+import heroVideo from '../../assets/background.mp4';
+const VIDEO_SRC = heroVideo;
 
 const Header = () => {
   return (

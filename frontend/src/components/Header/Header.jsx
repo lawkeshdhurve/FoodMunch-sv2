@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import './Header.css'
-import posterImg from '../../assets/header_img.png';
-import heroVideo from '../../assets/background.mp4';
 
 const particles = ['🍕', '🍔', '🌮', '🍜', '🍣', '🧆', '🍰', '🥗'];
 
@@ -9,20 +7,19 @@ const Header = () => {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    // Explicitly command the video player to start playing on mount and recovery
     if (videoRef.current) {
-      videoRef.current.play().catch(e => console.log("Video playback waiting for user interaction", e));
+      videoRef.current.play().catch(() => {});
     }
   }, []);
 
   return (
     <div className='header'>
-        {/* 🎬 Bulletproof Background Video with Instant Poster Fallback */}
+        {/* 🎬 Background Video served from public/ folder */}
         <video
             ref={videoRef}
             className='header-video'
-            src={heroVideo}
-            poster={posterImg}
+            src="/background.mp4"
+            poster="/header_img.png"
             autoPlay
             muted
             loop

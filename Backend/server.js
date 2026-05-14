@@ -13,7 +13,27 @@ const port =process.env.PORT || 4000;
 
 //middleware
 app.use(express.json())
-app.use(cors())
+
+// CORS: restrict to known frontend domains only
+const allowedOrigins = [
+    "https://food-munch-sv2.vercel.app",
+    process.env.FRONTEND_URL,
+    process.env.ADMIN_URL,
+    "http://localhost:5173",
+    "http://localhost:5174",
+].filter(Boolean);
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow requests with no origin (mobile apps, Postman, server-to-server)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+}))
 
 //db connection
 connectDB();

@@ -1,25 +1,34 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './Header.css'
+import posterImg from '../../assets/header_img.png';
+import heroVideo from '../../assets/background.mp4';
 
 const particles = ['🍕', '🍔', '🌮', '🍜', '🍣', '🧆', '🍰', '🥗'];
 
-// 🎬 Using local custom MP4 file
-import heroVideo from '../../assets/background.mp4';
-const VIDEO_SRC = heroVideo;
-
 const Header = () => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // Explicitly command the video player to start playing on mount and recovery
+    if (videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Video playback waiting for user interaction", e));
+    }
+  }, []);
+
   return (
     <div className='header'>
-        {/* 🎬 Background Video Stream */}
+        {/* 🎬 Bulletproof Background Video with Instant Poster Fallback */}
         <video
+            ref={videoRef}
             className='header-video'
+            src={heroVideo}
+            poster={posterImg}
             autoPlay
             muted
             loop
             playsInline
-        >
-            <source src={VIDEO_SRC} type="video/mp4" />
-        </video>
+            preload="auto"
+        />
 
         {/* Floating Food Particles */}
         <div className='header-particles'>

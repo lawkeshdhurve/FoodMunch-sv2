@@ -3,17 +3,18 @@ import './Header.css'
 
 const particles = ['🍕', '🍔', '🌮', '🍜', '🍣', '🧆', '🍰', '🥗'];
 
-// 🎬 Using local MP4 file
-import heroVideo from '../../assets/background.mp4';
-const VIDEO_SRC = heroVideo;
+// 🎬 Stream high-speed external video to bypass bundle size limits
+import posterImg from '../../assets/header_img.png';
+const VIDEO_SRC = "https://assets.mixkit.co/videos/preview/mixkit-delicious-pizza-freshly-baked-in-a-wood-oven-41680-large.mp4";
 
 const Header = () => {
   return (
     <div className='header'>
-        {/* 🎬 Background Video */}
+        {/* 🎬 Background Video Stream */}
         <video
             className='header-video'
             src={VIDEO_SRC}
+            poster={posterImg}
             autoPlay
             muted
             loop

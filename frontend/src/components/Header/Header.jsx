@@ -4,7 +4,6 @@ import './Header.css'
 const particles = ['🍕', '🍔', '🌮', '🍜', '🍣', '🧆', '🍰', '🥗'];
 
 // 🎬 Stream high-speed external video to bypass bundle size limits
-import posterImg from '../../assets/header_img.png';
 const VIDEO_SRC = "https://res.cloudinary.com/demo/video/upload/food.mp4";
 
 const Header = () => {
@@ -13,13 +12,13 @@ const Header = () => {
         {/* 🎬 Background Video Stream */}
         <video
             className='header-video'
-            src={VIDEO_SRC}
-            poster={posterImg}
             autoPlay
             muted
             loop
             playsInline
-        />
+        >
+            <source src={VIDEO_SRC} type="video/mp4" />
+        </video>
 
         {/* Floating Food Particles */}
         <div className='header-particles'>

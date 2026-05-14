@@ -17,6 +17,7 @@ app.use(express.json())
 // CORS: restrict to known frontend domains only
 const allowedOrigins = [
     "https://food-munch-sv2.vercel.app",
+    "https://food-munch-sv2-bvn9.vercel.app",
     process.env.FRONTEND_URL,
     process.env.ADMIN_URL,
     "http://localhost:5173",

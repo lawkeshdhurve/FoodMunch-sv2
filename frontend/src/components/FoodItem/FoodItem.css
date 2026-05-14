@@ -2,15 +2,23 @@
     width: 100%;  
     margin: auto;  
     border-radius: 15px;  
-    transition: 0.3s;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
     animation: fadeIn 1s;  
+    box-shadow: var(--shadow-sm);
+}
+
+.food-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
 }
 .food-item-image{  
     width: 100%;  
     border-radius: 15px 15px 0px Өpx;  
 }  
 .food-item-info{  
-    padding: 20px;  
+    padding: 20px;
+    background-color: var(--surface-color);
+    border-radius: 0 0 15px 15px;
 }  
 .food-item-name-rating{  
     display: flex;  
@@ -26,11 +34,11 @@
     width: 70px;  
 }  
 .food-item-desc{  
-    color: #676767;  
+    color: var(--text-secondary);  
     font-size: 12px;  
 }
 .food-item-price{  
-    color: tomato;  
+    color: var(--primary-color);  
     font-size: 22px;  
     font-weight: 500;  
     margin: 10px 0px;  
@@ -55,8 +63,54 @@
     gap: 10px;  
     padding: 6px;  
     border-radius: 50px;  
-    background-color: white;  
+    background-color: var(--surface-color);  
 }
 .food-item-counter img{
     width: 30px;
+}
+
+/* ── Star Rating ───────────────────────────────────── */
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star {
+    font-size: 14px;
+    line-height: 1;
+    transition: transform 0.15s ease;
+}
+
+.star.filled {
+    color: #f59e0b;
+    text-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+}
+
+.star.half {
+    background: linear-gradient(90deg, #f59e0b 50%, var(--text-secondary) 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.star.empty {
+    color: var(--border-color);
+}
+
+.star-rating:hover .star.filled,
+.star-rating:hover .star.half {
+    transform: scale(1.2);
+}
+
+.star-score {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-left: 4px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    padding: 1px 7px;
+    line-height: 1.6;
 }

@@ -1,0 +1,130 @@
+/* ── Verify Email Page ───────────────────────────────────────── */
+.verify-email-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fff5f0 0%, #fff 60%, #fff5f0 100%);
+    padding: 20px;
+}
+
+.verify-email-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 56px 48px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+    animation: cardIn 0.5s ease;
+}
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Spinner (loading) ─── */
+.ve-spinner {
+    width: 64px;
+    height: 64px;
+    border: 5px solid #ffe0d5;
+    border-top-color: tomato;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin: 0 auto 28px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Icon (success / error) ─── */
+.ve-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 auto 24px;
+    animation: iconPop 0.5s ease;
+}
+
+@keyframes iconPop {
+    0%   { transform: scale(0.4); opacity: 0; }
+    70%  { transform: scale(1.12); }
+    100% { transform: scale(1);   opacity: 1; }
+}
+
+.ve-icon-success {
+    background: #e8f8ef;
+    color: #22c55e;
+    border: 3px solid #22c55e;
+}
+
+.ve-icon-error {
+    background: #fff0ef;
+    color: tomato;
+    border: 3px solid tomato;
+}
+
+/* ── Text ─── */
+.ve-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+}
+
+.ve-subtitle {
+    font-size: 15px;
+    color: #555;
+    margin: 0 0 10px;
+    line-height: 1.6;
+}
+
+.ve-redirect {
+    font-size: 13px;
+    color: #aaa;
+    margin: 0 0 24px;
+}
+
+.ve-hint {
+    font-size: 13px;
+    color: #aaa;
+    margin: 0 0 24px;
+    line-height: 1.6;
+}
+
+/* ── Buttons ─── */
+.ve-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    border-radius: 50px;
+    border: none;
+    background: tomato;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.ve-btn:hover {
+    background: #e5391a;
+    transform: translateY(-2px);
+}
+
+.ve-btn-outline {
+    background: transparent;
+    border: 2px solid tomato;
+    color: tomato;
+}
+
+.ve-btn-outline:hover {
+    background: tomato;
+    color: #fff;
+}

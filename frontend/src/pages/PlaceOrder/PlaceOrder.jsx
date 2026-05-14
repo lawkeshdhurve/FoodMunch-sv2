@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 const PlaceOrder = () => {
-  const {getTotalCartAmount,token,food_list,cartItems,url} =useContext(StoreContext);
+  const {getTotalCartAmount,token,food_list,cartItems,url,setIsLoading} =useContext(StoreContext);
   const [data,setData] = useState({
     firstName:"",
     lastName:"",
@@ -25,6 +25,7 @@ const PlaceOrder = () => {
   }
   const placeOrder = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     let orderItems = [];
     food_list.map((item)=>{
       if (cartItems[item._id]>0) {
@@ -38,15 +39,21 @@ const PlaceOrder = () => {
       items:orderItems,
       amount:getTotalCartAmount()+2,
     }
-    let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}})
     
-
-    if (response.data.success){
-      const {session_url} = response.data;
-      window.location.replace(session_url);
-    }
-    else{
-      alert("Error");
+    try {
+      let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}})
+      setIsLoading(false);
+      
+      if (response.data.success){
+        const {session_url} = response.data;
+        window.location.replace(session_url);
+      }
+      else{
+        alert("Error placing order");
+      }
+    } catch (error) {
+      setIsLoading(false);
+      alert("Something went wrong");
     }
   }
 

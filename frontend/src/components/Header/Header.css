@@ -1,11 +1,24 @@
 .header{
     margin: 30px auto;
-    background-image: url("https://d2clawv67efefq.cloudfront.net/ccbp-responsive-website/foodmunch-banner-bg.png");
     height: 100vh;
-    background-size: cover;
     position: relative;
-    border-radius:29px;
+    border-radius: 29px;
+    overflow: hidden;
 }
+
+/* 🎬 Background Video */
+.header-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    border-radius: 29px;
+}
+
 .header-contents{
     position: absolute;
     display: flex;
@@ -15,41 +28,114 @@
     max-width: 50%;
     bottom: 10%;
     left: 6vw;
-    animation: fadeIn 3s;
+    z-index: 1;
+    animation: slideUpFade 1.2s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 .header-contents h2{
-    font-weight: 500;
+    font-weight: 800;
     color: white;
-    font-size: max(4.5vw,22px);
+    font-size: max(4.5vw,28px);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    line-height: 1.2;
+}
+.header-highlight {
+    color: #ffd166;
 }
 .header-contents p{
-    color: white;
-    font-size: 1vw;
+    color: rgba(255,255,255,0.9);
+    font-size: max(1vw, 15px);
+    line-height: 1.7;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
-.header-contents button{
-    border: none;
-    color: #747474;
-    font-weight: 500;
-    padding: 1vw 2.3vw;
-    background-color: white;
-    font-size: max(1vw,13px);
+.header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
     border-radius: 50px;
+    letter-spacing: 0.5px;
+    animation: badgePulse 2s ease infinite;
+}
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+}
+.header-btn-primary {
+    border: none;
+    font-size: max(1vw, 15px);
+    font-weight: 700;
+    padding: max(1vw, 12px) max(2.5vw, 28px);
+    background: linear-gradient(135deg, #f97316, #e55a00);
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(249, 115, 22, 0.5);
+    letter-spacing: 0.3px;
+}
+.header-btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 32px rgba(249, 115, 22, 0.6);
+}
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+/* Overlay */
+.header-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    z-index: 0;
+}
+/* Particles */
+.header-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+.particle {
+    position: absolute;
+    font-size: 28px;
+    animation: float calc(8s + var(--i) * 1.3s) ease-in-out infinite;
+    opacity: 0;
+    left: calc(10% + var(--i) * 11%);
+    bottom: -40px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+}
+@keyframes float {
+    0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+    10% { opacity: 0.75; }
+    90% { opacity: 0.6; }
+    100% { opacity: 0; transform: translateY(-100vh) rotate(360deg); }
 }
 @media (max-width:1050px) {
-    
     .header-contents{
-        max-width: 45%;
+        max-width: 60%;
     }
 }
 @media (max-width:750px) {
     .header-contents{
-        height: 65%;
-
+        max-width: 85%;
+        bottom: 8%;
     }
     .header-contents p{
         display: none;
     }
-    .header-contents button{
-        padding: 2vw 4vw;
+    .header-btn-primary{
+        padding: 12px 24px;
     }
 }
